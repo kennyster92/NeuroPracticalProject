@@ -13,7 +13,7 @@ process.on('unhandledRejection', (err) => {
   console.error(`${(new Date()).toUTCString()} unhandledRejection:`, err);
 });
 
-console.log('server', server);
-server.startExpressApolloServer.listen({ port }, () => console.log(
-  `🚀 Server ready at http://localhost:${port}/api`,
-));
+//console.log('server', server);
+//server.startExpressApolloServer.listen().then({ port }, () => console.log(
+//  `🚀 Server ready at http://localhost:${port}/api`,
+//));
