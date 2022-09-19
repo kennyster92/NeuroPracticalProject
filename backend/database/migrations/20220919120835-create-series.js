@@ -20,7 +20,7 @@ module.exports = {
           key: 'id',
         }
       },
-      StudyId: {
+      studyId: {
         type: Sequelize.INTEGER,
         references: {
           model:{
