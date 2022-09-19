@@ -1,6 +1,9 @@
 const { gql } = require('apollo-server-express');
 const patientType = require('./patient');
 const studiesType = require('./studies');
+const seriesType = require('./series');
+const filesType = require('./files');
+const modalityType = require('./modality');
 
 const rootType = gql`
  type Query {
@@ -12,4 +15,4 @@ const rootType = gql`
 
 `;
 
-module.exports = [rootType, patientType, studiesType];
+module.exports = [rootType, patientType, studiesType, seriesType, filesType, modalityType];
