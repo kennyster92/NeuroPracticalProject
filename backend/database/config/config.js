@@ -4,12 +4,13 @@ require('dotenv').config();
 
 module.exports = {
   development: {
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+    username: 'kevinceni', //process.env.DB_USERNAME,
+    password: '12345678', // process.env.DB_PASSWORD,
+    database: 'neuro_project_db', // process.env.DB_NAME,
     host: '127.0.0.1',
+    port: '3307',
     dialect: 'mysql',
-    use_env_variable: 'DEV_DATABASE_URL',
+    //use_env_variable: 'jdbc:mysql://127.0.0.1:3306/neuro_project_db', //'DEV_DATABASE_URL',
   },
   test: {
     username: process.env.DB_USERNAME,
