@@ -10,12 +10,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
-      Modality.belongsTo(models.Series, { foreignKey: 'seriesId', as: 'series' });
+      Modality.hasMany(models.Series, { foreignKey: 'modalityId', as: 'series' });
     }
   }
   Modality.init({
-    idModality: DataTypes.INTEGER,
     name: DataTypes.STRING
   }, {
     sequelize,

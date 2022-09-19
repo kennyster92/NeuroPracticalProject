@@ -1,50 +1,54 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Files', {
-      idFile: {
+    await queryInterface.createTable('Series', {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      idPatient: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: 'Patients',
-          },
-          key: 'idPatient',
-        }
-      },
-      idStudy: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: 'Studies',
-          },
-          key: 'idStudy',
-        }
-      },
-      idSeries: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: 'Series',
-          },
-          key: 'idSeries',
-        }
-      },
-      filePath: {
+      seriesName: {
         type: Sequelize.STRING
       },
-      createdDate: {
+      patientId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model:{
+            tableName:'Patients',
+          },
+          key: 'id',
+        }
+      },
+      StudyId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model:{
+            tableName:'Studies',
+          },
+          key: 'id',
+        }
+      },
+      modalityId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model:{
+            tableName:'Modalities',
+          },
+          key: 'id',
+        }
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
       }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Files');
+    await queryInterface.dropTable('Series');
   }
 };

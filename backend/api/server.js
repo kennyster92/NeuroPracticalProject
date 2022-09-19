@@ -13,8 +13,8 @@ const port = process.env.PORT || 3301;
 // init DB with some sample data
 const data = {
   patient: [
-    {idPatient: 1, name: 'Kevin Ceni'},
-    {idPatient: 2, name: 'Pinco Pallino'},
+    {id: 1, name: 'Kevin Ceni'},
+    {id: 2, name: 'Pinco Pallino'},
   ],
 }
 

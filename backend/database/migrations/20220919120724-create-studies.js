@@ -2,25 +2,29 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Studies', {
-      idStudy: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      idPatient: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: 'Patients',
-          },
-          key: 'idPatient',
-        },
-      },
       studyName: {
         type: Sequelize.STRING
       },
-      createdDate: {
+      patientId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model:{
+            tableName:'Patients',
+          },
+          key: 'id',
+        }
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
       }

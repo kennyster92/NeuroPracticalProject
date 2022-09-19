@@ -10,16 +10,13 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
-      Patient.hasOne(models.Studies, { foreignKey: 'idPatient', as: 'study' });
-      Patient.hasMany(models.Files, { foreignKey: 'idPatient', as: 'files' });
-      Patient.hasMany(models.Series, { foreignKey: 'idPatient', as: 'series' });
+      Patient.hasOne(models.Studies, { foreignKey: 'patientId', as: 'study' });
+      Patient.hasMany(models.Files, { foreignKey: 'patientId', as: 'files' });
+      Patient.hasMany(models.Series, { foreignKey: 'patientId', as: 'series' });
     }
   }
   Patient.init({
-    idPatient: DataTypes.INTEGER,
-    name: DataTypes.STRING,
-    createdDate: DataTypes.DATE
+    name: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Patient',

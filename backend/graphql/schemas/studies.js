@@ -3,12 +3,12 @@ const { gql } = require('apollo-server-express');
 module.exports = gql`
 
  type Studies {
-     idStudies: Int!
+     id: Int!
      studyName: String!
      patient: [Patient!]
      series: [Series!]
      files: [Files!]
-     createdDate: String
+     createdAt: String
  }
 
  extend type Query {
