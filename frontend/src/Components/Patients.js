@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+import Patient from './Patient';
+
 function Patients() {
   const [patient, setPatient] = useState([]);
 
@@ -16,9 +18,7 @@ function Patients() {
       Patients
       {patient.map((item, i) => {
         return (
-          <div key={i}>
-            <p>{item?.name}</p>
-          </div>
+            <Patient item={item} />
         );
       })}
     </div>
