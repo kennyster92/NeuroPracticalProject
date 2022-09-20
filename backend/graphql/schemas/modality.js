@@ -7,4 +7,7 @@ module.exports = gql`
      name: String!
  }
 
+ extend type Query {
+    searchModalities(name: String!): [Modality!]
+ }
 `;

@@ -1,15 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import axios from "axios";
-import { useQuery } from 'react-query'
 
 import Study from './Study';
 
-const endpoint = 'http://localhost:3301/api/';
+export default class Studies extends React.Component {
+  state = { 
+    studies: [],
+  }
+  endpoint = 'http://localhost:3301/api/';
 
-function Studies() {
-  const { data, isLoading, error } = useQuery('studies', () => {
-    return axios({
-      url: endpoint,
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    axios({
+      url: this.endpoint,
       method: 'post',
       data: {
         query: `
@@ -21,26 +27,32 @@ function Studies() {
           }
           `
       }
-    }).then((response) => response.data.data);
-  });
-
-  if (isLoading) {
-    return 'Loading...';
-  }
-  if (error) {
-    <pre>{error.message}</pre>
+    }).then((response) => {
+        const studies = response.data.data.getAllStudies;
+        this.setState({studies});
+    }).catch(error => console.log(error));
   }
 
-  return (
-    <div>
-      <h2>Studies</h2>
-      <br/>
-      <br/>
-      {data.getAllStudies.map((study) => (
-        <Study key={study.id} data={study}/>
-      ))}
-    </div>
-  );
+  render() {
+    return (
+      <div>
+        <h2>Studies</h2>
+        <br/>
+        <br/>
+        <table className="table">
+          <thead>
+            <tr>
+              <td>ID</td>
+              <td>Name</td>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.studies.map((study) => (
+              <Study key={study.id} data={study}/>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )
+  }
 }
-
-export default Studies;

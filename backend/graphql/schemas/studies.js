@@ -8,11 +8,12 @@ module.exports = gql`
      patient: [Patient!]
      series: [Series!]
      files: [Files!]
-     createdAt: String
+     createdAt: String!
  }
 
  extend type Query {
      getAllStudies: [Studies!]
+     countStudies(startDate: String!, endDate: String!): Int!
  }
 
 `;

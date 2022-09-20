@@ -1,19 +1,21 @@
 
-function Modality() {
-    const item = this.props;
+import React from "react";
 
+export default class Modality extends React.Component {
+  state = { 
+    modality: this.props.data,
+  }
+
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
     return (
-        <div>
-        <table>
-            <tr>
-                <td>Name: {item.name}</td>
-            </tr>
-            <tr>
-                <td>Created at: {item.createdAt}</td>
-            </tr>
-        </table>
-        </div>
-    );
+        <tr>
+        <td>{this.state.modality.id}</td>
+        <td>{this.state.modality.name}</td>
+    </tr>
+    )
+  }
 }
-
-export default Modality;

@@ -1,18 +1,21 @@
 
-function Study(data) {
+import React from "react";
 
+export default class Study extends React.Component {
+  state = { 
+    study: this.props.data,
+  }
+
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
     return (
-        <div>
-        <table>
-            <tbody>
-                <tr>
-                    <td>Id: {data.data.id}</td>
-                    <td>Name: {data.data.studyName}</td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
-    );
+        <tr>
+        <td>{this.state.study.id}</td>
+        <td>{this.state.study.studyName}</td>
+    </tr>
+    )
+  }
 }
-
-export default Study;

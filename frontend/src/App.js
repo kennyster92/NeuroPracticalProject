@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Patients from './Components/Patients';
 import Studies from './Components/Studies';
 import Home from './Components/Home';
+import CountStudies from './Components/CountStudies';
+import SearchModality from './Components/SearchModality';
 
 function App() {
   return (
@@ -23,16 +25,20 @@ function App() {
               <Link to="/studies">List of studies</Link>
             </li>
             <li>
-              <Link to="/crud-patients">CRUD on patients</Link>
+              <Link to="/count-studies">Count studies in a week</Link>
+            </li>
+            <li>
+              <Link to="/search-modality">Search modality</Link>
             </li>
           </ul>
 
           <hr />
           <Routes>
             <Route path="/" element={<Home/>} />
-            <Route path="/patients" element={<Patients/>} />
+            <Route path="/patients" element={<Patients />} />
             <Route path="/studies" element={<Studies/>} />
-            <Route path="/crud-patients" element={<CrudPatient/>} />
+            <Route path="/count-studies" element={<CountStudies/>} />
+            <Route path="/search-modality" element={<SearchModality/>} />
           </Routes>
         </div>
       </Router>

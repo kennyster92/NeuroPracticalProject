@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
 
 function Home() {
 
@@ -7,9 +6,9 @@ function Home() {
   }, []);
 
   return (
-    <div>
+    <h2>
       Home page
-    </div>
+    </h2>
   );
 }
 
