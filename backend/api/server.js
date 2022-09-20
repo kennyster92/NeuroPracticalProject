@@ -4,19 +4,12 @@ const express = require('express');
 const { createServer } = require('http');
 const { ApolloServer } = require('apollo-server-express');
 const cors = require('cors');
+
 const typeDefs = require('../graphql/schemas');
 const resolvers = require('../graphql/resolvers');
 const context = require('../graphql/context');
 
 const port = process.env.PORT || 3301;
-
-// init DB with some sample data
-const data = {
-  patient: [
-    {id: 1, name: 'Kevin Ceni'},
-    {id: 2, name: 'Pinco Pallino'},
-  ],
-}
 
 const app = express();
 
@@ -26,7 +19,7 @@ async function startExpressApolloServer() {
   const apolloServer = new ApolloServer({
     typeDefs,
     resolvers,
-    context: data,
+    context,
     introspection: true,
     playground: {
       settings: {

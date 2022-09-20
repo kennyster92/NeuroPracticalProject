@@ -1,26 +1,45 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import axios from "axios";
+import { useQuery } from 'react-query'
 
 import Patient from './Patient';
 
-function Patients() {
-  const [patient, setPatient] = useState([]);
+const endpoint = 'http://localhost:3301/api/';
 
-  useEffect(() => {
-    axios.get('http://localhost:3001/api/patients').then((data) => {
-      console.log(data);
-      setPatient(data?.data);
-    });
-  }, []);
+function Patients() {
+
+  const { data, isLoading, error } = useQuery('patients', () => {
+    return axios({
+      url: endpoint,
+      method: 'post',
+      data: {
+        query: `
+          query getAllPatients {
+            getAllPatients {
+              name
+              id
+            }
+          }
+          `
+      }
+    }).then((response) => response.data.data);
+  });
+
+  if (isLoading) {
+    return 'Loading...';
+  }
+  if (error) {
+    <pre>{error.message}</pre>
+  }
 
   return (
     <div>
-      Patients
-      {patient.map((item, i) => {
-        return (
-            <Patient item={item} />
-        );
-      })}
+      <h2>Patients</h2>
+      <br/>
+      <br/>
+      {data.getAllPatients.map((patient) => (
+        <Patient key={patient.id} data={patient} />
+      ))}
     </div>
   );
 }

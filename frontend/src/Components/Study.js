@@ -1,16 +1,15 @@
 
-function Study() {
-    const item = this.props;
+function Study(data) {
 
     return (
         <div>
         <table>
-            <tr>
-                <td>Name: {item.studyName}</td>
-            </tr>
-            <tr>
-                <td>Created at: {item.createdAt}</td>
-            </tr>
+            <tbody>
+                <tr>
+                    <td>Id: {data.data.id}</td>
+                    <td>Name: {data.data.studyName}</td>
+                </tr>
+            </tbody>
         </table>
         </div>
     );

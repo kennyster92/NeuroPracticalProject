@@ -2,13 +2,17 @@ import './App.css';
 
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 
 import Patients from './Components/Patients';
 import Studies from './Components/Studies';
 import Home from './Components/Home';
 
+const queryClient = new QueryClient();
+
 function App() {
   return (
+    <QueryClientProvider client={queryClient}>
     <div className="App">
       <Router>
         <div>
@@ -33,6 +37,7 @@ function App() {
         </div>
       </Router>
     </div>
+    </QueryClientProvider>
   );
 }
 

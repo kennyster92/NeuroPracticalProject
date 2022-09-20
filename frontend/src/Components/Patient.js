@@ -1,17 +1,15 @@
 
-function Patient() {
-    const item = this.props;
-
+function Patient(data) {
     return (
         <div>
-        <table>
-            <tr>
-                <td>Name: {item.name}</td>
-            </tr>
-            <tr>
-                <td>Created at: {item.createdAt}</td>
-            </tr>
-        </table>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Id: {data.data.id}</td>
+                        <td>Name: {data.data.name}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     );
 }
