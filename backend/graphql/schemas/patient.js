@@ -14,4 +14,15 @@ module.exports = gql`
      getAllPatients: [Patient!]
  }
 
+ extend type Mutation {
+     createPatient(name: String!): PatientResponse
+     updatePatient(id: Int!, name: String!): PatientResponse
+     deletePatient(id: Int!): PatientResponse
+ }
+
+ type PatientResponse {
+     id: Int!
+     name: String!
+     createdAt: String!
+ }
 `;
