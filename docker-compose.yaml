@@ -1,0 +1,26 @@
+version: '3'
+services:
+  mysql:
+    image: docker hub check
+    environment:
+      - MYSQL_PASSWPRD=
+  backend:
+    build:
+      dockerfile: Dockerfile.dev
+      context: './server'
+    volumes:
+      - /app/node_modules
+      - ./server:/app
+    environment:
+      - DB_NAME=neuro_project_db
+      - DB_USERNAME=root
+      - DB_PASSWORD=1234
+      - DB_LOCAL_PORT=3307
+  frontend:
+    stdin_open: true
+    build:
+      dockerfile: Dockerfile.dev
+      context: './client'
+    volumes:
+      - /app/node_modules
+      - ./client:/app
