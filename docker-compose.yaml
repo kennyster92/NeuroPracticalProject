@@ -1,9 +1,22 @@
 version: '3'
 services:
   mysql:
-    image: docker hub check
+    image: mysql:5.7
+    container_name: mysql
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
     environment:
-      - MYSQL_PASSWPRD=
+      MYSQL_DATABASE: neuro_project_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: 1234
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+      
   backend:
     build:
       dockerfile: Dockerfile.dev
@@ -16,6 +29,7 @@ services:
       - DB_USERNAME=root
       - DB_PASSWORD=1234
       - DB_LOCAL_PORT=3307
+      
   frontend:
     stdin_open: true
     build:
